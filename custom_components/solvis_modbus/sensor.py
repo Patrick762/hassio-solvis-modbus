@@ -3,15 +3,12 @@
 import logging
 from decimal import Decimal
 
-from homeassistant.components.sensor import SensorEntity, CONF_STATE_CLASS
+from homeassistant.components.sensor import SensorEntity
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.const import (
     CONF_IP_ADDRESS,
     CONF_NAME,
-    CONF_UNIT_OF_MEASUREMENT,
-    CONF_DEVICE_CLASS,
-    EntityCategory,
 )
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.entity import DeviceInfo
@@ -45,7 +42,7 @@ async def async_setup_entry(
 
     # Add sensors according to device_info
 
-    ###########
+    ##########
     #########       TODO: Not creating entities!!!!
     ##########
 

@@ -1,14 +1,8 @@
 """Solvis integration."""
 
-import re
-import logging
-
-from homeassistant.components import bluetooth
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import CONF_IP_ADDRESS, CONF_NAME, Platform
+from homeassistant.const import CONF_IP_ADDRESS, Platform
 from homeassistant.core import HomeAssistant
-from homeassistant.helpers.entity import DeviceInfo
-from homeassistant.exceptions import ConfigEntryNotReady
 
 from .const import (
     DATA_COORDINATOR,
