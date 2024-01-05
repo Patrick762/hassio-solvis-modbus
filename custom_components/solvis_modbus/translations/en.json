@@ -1,0 +1,19 @@
+{
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "ip_address": "IP-Address",
+          "name": "Name"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "gas_power": {
+        "name": "Gas burner power"
+      }
+    }
+  }
+}

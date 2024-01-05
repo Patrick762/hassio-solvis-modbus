@@ -1,0 +1,12 @@
+{
+    "domain": "solvis_modbus",
+    "name": "Solvis Modbus",
+    "codeowners": ["@Patrick762"],
+    "config_flow": true,
+    "documentation": "https://github.com/Patrick762/hassio-solvis-modbus",
+    "integration_type": "device",
+    "iot_class": "local_polling",
+    "issue_tracker": "https://github.com/Patrick762/hassio-solvis-modbus/issues",
+    "requirements": ["pymodbus"],
+    "version": "0.0.1"
+}
