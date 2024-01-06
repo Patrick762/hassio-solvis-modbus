@@ -18,7 +18,7 @@ class SolvisConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     """Handle config flow for Solvis Modbus devices."""
 
     def __init__(self) -> None:
-        _LOGGER.info("Initialize config flow")
+        _LOGGER.info("Initialize config flow for %s", DOMAIN)
 
     async def async_step_user(
         self, user_input: dict[str, Any] | None = None
@@ -31,17 +31,17 @@ class SolvisConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             await self.async_set_unique_id(address, raise_on_progress=False)
             self._abort_if_unique_id_configured()
             return self.async_create_entry(
-                title=name,
+                title=re.sub("[^A-Za-z0-9_-]+", "", name),
                 data={
                     CONF_IP_ADDRESS: address,
-                    CONF_NAME: re.sub("[^A-Za-z0-9]+", "", name),
+                    CONF_NAME: re.sub("[^A-Za-z0-9_-]+", "", name),
                 },
             )
 
         data_schema = vol.Schema(
             {
                 vol.Required(CONF_IP_ADDRESS): str,
-                vol.Required(CONF_NAME, default="SC3"): str,
+                vol.Required(CONF_NAME): str,
             }
         )
         return self.async_show_form(

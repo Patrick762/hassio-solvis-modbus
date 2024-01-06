@@ -1,7 +1,7 @@
 {
-  "options": {
+  "config": {
     "step": {
-      "init": {
+      "user": {
         "data": {
           "ip_address": "IP-Address",
           "name": "Name"
@@ -13,6 +13,48 @@
     "sensor": {
       "gas_power": {
         "name": "Gas burner power"
+      },
+      "outdoor_air_temp": {
+        "name": "Outdoor temperature"
+      },
+      "roof_air_temp": {
+        "name": "Outdoor temperature roof"
+      },
+      "cold_water_temp": {
+        "name": "Cold water temperature"
+      },
+      "flow_water_temp": {
+        "name": "Flow water temperature"
+      },
+      "domestic_water_temp": {
+        "name": "Domestic water temperature"
+      },
+      "solar_water_temp": {
+        "name": "Solar temperature"
+      },
+      "solar_heat_exchanger_in_water_temp": {
+        "name": "Solar temperature heat exchanger input"
+      },
+      "solar_heat_exchanger_out_water_temp": {
+        "name": "Solar temperature heat exchanger output"
+      },
+      "tank_layer1_water_temp": {
+        "name": "Tank layer 1 water temperature"
+      },
+      "tank_layer2_water_temp": {
+        "name": "Tank layer 1 water temperature"
+      },
+      "tank_layer3_water_temp": {
+        "name": "Tank layer 1 water temperature"
+      },
+      "tank_layer4_water_temp": {
+        "name": "Tank layer 1 water temperature"
+      },
+      "solar_water_flow": {
+        "name": "Solar flow"
+      },
+      "domestic_water_flow": {
+        "name": "Domestic water flow"
       }
     }
   }

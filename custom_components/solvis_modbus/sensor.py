@@ -2,6 +2,7 @@
 
 import logging
 from decimal import Decimal
+import re
 
 from homeassistant.components.sensor import SensorEntity
 from homeassistant.config_entries import ConfigEntry
@@ -26,26 +27,19 @@ async def async_setup_entry(
 ) -> None:
     """Setup sensor entities."""
 
-    device_name = entry.data.get(CONF_NAME)
     address = entry.data.get(CONF_IP_ADDRESS)
     if address is None:
         _LOGGER.error("Device has no address")
 
     # Generate device info
-    _LOGGER.error("Creating sensors for device with address %s", address)
     device_info = DeviceInfo(
         identifiers={(DOMAIN, entry.data.get(CONF_IP_ADDRESS))},
-        name=entry.title,
+        name=entry.data.get(CONF_NAME),
         manufacturer=MANUFACTURER,
         model="Solvis Control 3",
     )
 
-    # Add sensors according to device_info
-
-    ##########
-    #########       TODO: Not creating entities!!!!
-    ##########
-
+    # Add sensors
     sensors_to_add = []
 
     for register in REGISTERS:
@@ -79,6 +73,10 @@ class SolvisSensor(CoordinatorEntity, SensorEntity):
 
         self._address = address
         self._response_key = name
+
+        self._attr_has_entity_name = True
+        self._attr_unique_id = f"{re.sub('^[A-Za-z0-9_-]*$', '', name)}_{name}"
+        self._attr_translation_key = name
 
         self._attr_device_info = device_info
         self._attr_available = False

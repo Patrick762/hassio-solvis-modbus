@@ -5,8 +5,6 @@ from dataclasses import dataclass
 DOMAIN = "solvis_modbus"
 MANUFACTURER = "Solvis"
 
-CONF_OPTIONS = "options"
-
 DATA_COORDINATOR = "coordinator"
 
 @dataclass(frozen=True)

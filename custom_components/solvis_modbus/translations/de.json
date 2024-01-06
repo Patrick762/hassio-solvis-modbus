@@ -1,7 +1,7 @@
 {
-  "options": {
+  "config": {
     "step": {
-      "init": {
+      "user": {
         "data": {
           "ip_address": "IP Adresse",
           "name": "Name"
@@ -13,6 +13,48 @@
     "sensor": {
       "gas_power": {
         "name": "Brennerleistung"
+      },
+      "outdoor_air_temp": {
+        "name": "Außentemperatur"
+      },
+      "roof_air_temp": {
+        "name": "Außentemperatur Dach"
+      },
+      "cold_water_temp": {
+        "name": "Kaltwasser Temperatur"
+      },
+      "flow_water_temp": {
+        "name": "Vorlauf Temperatur"
+      },
+      "domestic_water_temp": {
+        "name": "Brauchwasser Temperatur"
+      },
+      "solar_water_temp": {
+        "name": "Solar Temperatur"
+      },
+      "solar_heat_exchanger_in_water_temp": {
+        "name": "Solar Temperatur Wärmetauscher Eingang"
+      },
+      "solar_heat_exchanger_out_water_temp": {
+        "name": "Solar Temperatur Wärmetauscher Ausgang"
+      },
+      "tank_layer1_water_temp": {
+        "name": "Kessel Schicht 1 Temperatur"
+      },
+      "tank_layer2_water_temp": {
+        "name": "Kessel Schicht 2 Temperatur"
+      },
+      "tank_layer3_water_temp": {
+        "name": "Kessel Schicht 3 Temperatur"
+      },
+      "tank_layer4_water_temp": {
+        "name": "Kessel Schicht 4 Temperatur"
+      },
+      "solar_water_flow": {
+        "name": "Solar Durchfluss"
+      },
+      "domestic_water_flow": {
+        "name": "Brauchwasser Durchfluss"
       }
     }
   }
