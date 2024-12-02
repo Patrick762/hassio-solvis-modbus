@@ -129,4 +129,11 @@ REGISTERS = [
         device_class="speed",
         state_class="measurement",
     ),
+    ModbusFieldConfig(
+        name="circulation_mode",
+        address=2049,
+        unit="",
+        device_class= None,
+        state_class="state",
+    ),
 ]
