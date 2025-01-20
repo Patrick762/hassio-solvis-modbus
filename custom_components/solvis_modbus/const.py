@@ -129,4 +129,19 @@ REGISTERS = [
         device_class="speed",
         state_class="measurement",
     ),
+
+    ModbusFieldConfig(
+        name="heat_pump_thermal_power",
+        address=33544,
+        unit="kW",
+        device_class="power",
+        state_class="measurement",
+    ),
+    ModbusFieldConfig(
+        name="heat_pump_electric_power",
+        address=33545,
+        unit="kW",
+        device_class="power",
+        state_class="measurement",
+    ),
 ]

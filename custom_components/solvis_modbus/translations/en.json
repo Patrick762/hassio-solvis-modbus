@@ -55,6 +55,12 @@
       },
       "domestic_water_flow": {
         "name": "Domestic water flow"
+      },
+      "heat_pump_thermal_power": {
+        "name": "Heat pump thermal power"
+      },
+      "heat_pump_electric_power": {
+        "name": "Heat pump electric power"
       }
     }
   }
