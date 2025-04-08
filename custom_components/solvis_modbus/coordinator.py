@@ -5,7 +5,7 @@ from datetime import timedelta
 import logging
 import async_timeout
 from pymodbus.client import ModbusTcpClient
-from pymodbus.payload import BinaryPayloadDecoder, Endian
+from pymodbus.payload import Endian
 
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.update_coordinator import (
@@ -76,9 +76,13 @@ class PollingCoordinator(DataUpdateCoordinator):
                         )
 
                         # Add data to return values
-                        if(len(result.registers) == 1):
-                            d = BinaryPayloadDecoder.fromRegisters(result.registers, byteorder=Endian.BIG)
-                            parsed_data[register.name] = round(d.decode_16bit_int() * register.multiplier, 2)
+                        if len(result.registers) == 1:
+                            d = self.client.convert_from_registers(
+                                result.registers,
+                                self.client.DATATYPE.INT16,
+                                word_order=Endian.BIG,
+                            )
+                            parsed_data[register.name] = round(d * register.multiplier, 2)
 
             except TimeoutError:
                 self.logger.warning("Polling timed out")
