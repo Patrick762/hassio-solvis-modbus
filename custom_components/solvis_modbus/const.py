@@ -1,11 +1,23 @@
 """Constants for the Solvis Modbus integration."""
 
 from dataclasses import dataclass
+from enum import Flag
+from typing import Final
 
 DOMAIN = "solvis_modbus"
 MANUFACTURER = "Solvis"
 
 DATA_COORDINATOR = "coordinator"
+
+CONF_HEATER_TYPE: Final = "heater_type"
+
+
+class HeaterType(Flag):
+    """Enum for heater types."""
+
+    GAS_BOILER = 1
+    HEAT_PUMP = 2
+
 
 @dataclass(frozen=True)
 class ModbusFieldConfig:
@@ -16,16 +28,9 @@ class ModbusFieldConfig:
     state_class: str
     multiplier: float = 0.1
 
-PORT = 502
-REGISTERS = [
-    ModbusFieldConfig(
-        name="gas_power",
-        address=33539,
-        unit="kW",
-        device_class="power",
-        state_class="measurement",
-    ),
 
+PORT = 502
+DEFAULT_REGISTERS = [
     ModbusFieldConfig(
         name="outdoor_air_temp",
         address=33033,
@@ -40,7 +45,6 @@ REGISTERS = [
         device_class="temperature",
         state_class="measurement",
     ),
-
     ModbusFieldConfig(
         name="cold_water_temp",
         address=33034,
@@ -63,7 +67,6 @@ REGISTERS = [
         device_class="temperature",
         state_class="measurement",
     ),
-
     ModbusFieldConfig(
         name="solar_water_temp",
         address=33030,
@@ -85,7 +88,6 @@ REGISTERS = [
         device_class="temperature",
         state_class="measurement",
     ),
-
     ModbusFieldConfig(
         name="tank_layer1_water_temp",
         address=33026,
@@ -114,7 +116,6 @@ REGISTERS = [
         device_class="temperature",
         state_class="measurement",
     ),
-
     ModbusFieldConfig(
         name="solar_water_flow",
         address=33040,
@@ -129,7 +130,20 @@ REGISTERS = [
         device_class="speed",
         state_class="measurement",
     ),
+]
 
+
+GAS_REGISTERS = [
+    ModbusFieldConfig(
+        name="gas_power",
+        address=33539,
+        unit="kW",
+        device_class="power",
+        state_class="measurement",
+    ),
+]
+
+HEAT_PUMP_REGISTERS = [
     ModbusFieldConfig(
         name="heat_pump_thermal_power",
         address=33544,
@@ -144,4 +158,11 @@ REGISTERS = [
         device_class="power",
         state_class="measurement",
     ),
+]
+
+
+REGISTERS = [
+    *DEFAULT_REGISTERS,
+    *GAS_REGISTERS,
+    *HEAT_PUMP_REGISTERS,
 ]

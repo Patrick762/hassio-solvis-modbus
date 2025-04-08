@@ -17,10 +17,20 @@ from homeassistant.helpers.update_coordinator import (
     CoordinatorEntity,
 )
 
-from .const import DATA_COORDINATOR, DOMAIN, MANUFACTURER, REGISTERS
+from .const import (
+    DATA_COORDINATOR,
+    DOMAIN,
+    GAS_REGISTERS,
+    HEAT_PUMP_REGISTERS,
+    MANUFACTURER,
+    DEFAULT_REGISTERS,
+    CONF_HEATER_TYPE,
+    HeaterType,
+)
 from .coordinator import PollingCoordinator
 
 _LOGGER = logging.getLogger(__name__)
+
 
 async def async_setup_entry(
     hass: HomeAssistant, entry: ConfigEntry, async_add_entities: AddEntitiesCallback
@@ -42,7 +52,14 @@ async def async_setup_entry(
     # Add sensors
     sensors_to_add = []
 
-    for register in REGISTERS:
+    heater_types = HeaterType(entry.options.get(CONF_HEATER_TYPE))
+    registers = DEFAULT_REGISTERS.copy()
+    if heater_types & HeaterType.GAS_BOILER:
+        registers.extend(GAS_REGISTERS)
+    if heater_types & HeaterType.HEAT_PUMP:
+        registers.extend(HEAT_PUMP_REGISTERS)
+
+    for register in registers:
         sensors_to_add.append(
             SolvisSensor(
                 hass.data[DOMAIN][entry.entry_id][DATA_COORDINATOR],

@@ -6,6 +6,19 @@
           "ip_address": "IP Adresse",
           "name": "Name"
         }
+      },
+      "heater_type": {
+        "data": {
+          "type": "Heizungsarten"
+        }
+      }
+    }
+  },
+  "selector": {
+    "heater_type": {
+      "options": {
+        "GAS_BOILER": "Gasheizung",
+        "HEAT_PUMP": "Wärmepumpe"
       }
     }
   },
