@@ -6,10 +6,16 @@ from homeassistant.const import CONF_IP_ADDRESS, Platform
 from homeassistant.core import HomeAssistant
 
 from .const import (
+    CONF_HEATER_TYPE,
     DATA_COORDINATOR,
     DOMAIN,
+    HeaterType,
 )
 from .coordinator import PollingCoordinator
+import logging
+
+_LOGGER = logging.getLogger(__name__)
+
 
 PLATFORMS: [Platform] = [Platform.SENSOR]
 
@@ -39,6 +45,39 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
 
     # Setup platforms
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
+
+    return True
+
+
+async def async_migrate_entry(hass: HomeAssistant, config_entry: ConfigEntry):
+    """Migrate old entry."""
+    _LOGGER.info(
+        "Migrating configuration from version %s.%s",
+        config_entry.version,
+        config_entry.minor_version,
+    )
+
+    if config_entry.version > 2:
+        # This means the user has downgraded from a future version
+        return False
+
+    if config_entry.version == 1:
+
+        new_data = {**config_entry.data}
+        new_options = {**config_entry.options}
+
+        new_options[CONF_HEATER_TYPE] = HeaterType.GAS_BOILER
+        _LOGGER.debug("Adding default heater type to options")
+
+        hass.config_entries.async_update_entry(
+            config_entry, data=new_data, options=new_options, minor_version=1, version=2
+        )
+
+    _LOGGER.info(
+        "Migration to configuration version %s.%s successful",
+        config_entry.version,
+        config_entry.minor_version,
+    )
 
     return True
 

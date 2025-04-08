@@ -23,6 +23,9 @@ _LOGGER = logging.getLogger(__name__)
 class SolvisConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     """Handle config flow for Solvis Modbus devices."""
 
+    VERSION = 2
+    MINOR_VERSION = 1
+
     def __init__(self) -> None:
         _LOGGER.info("Initialize config flow for %s", DOMAIN)
         self._address: str | None = None
