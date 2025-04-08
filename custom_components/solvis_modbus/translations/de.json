@@ -14,6 +14,13 @@
       }
     }
   },
+  "options": {
+    "init": {
+      "data": {
+        "type": "Heizungsarten"
+      }
+    }
+  },
   "selector": {
     "heater_type": {
       "options": {

@@ -97,3 +97,60 @@ class SolvisConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             step_id="heater_type",
             data_schema=data_schema,
         )
+
+    @staticmethod
+    @callback
+    def async_get_options_flow(
+        config_entry: config_entries.ConfigEntry,
+    ) -> "SolvisOptionsFlow":
+        """Create the options flow."""
+        return SolvisOptionsFlow(config_entry)
+
+
+class SolvisOptionsFlow(config_entries.OptionsFlow):
+    def __init__(self, config_entry: config_entries.ConfigEntry):
+        self.config_entry = config_entry
+
+    async def async_step_init(
+        self, user_input: dict[str, Any] | None = None
+    ) -> FlowResult:
+        """Handle options."""
+        if user_input is not None:
+            heater_type_compunt = HeaterType(0)
+            for t in user_input.get(CONF_HEATER_TYPE):
+                heater_type_compunt |= HeaterType[t]
+            return self.async_create_entry(data={CONF_HEATER_TYPE: heater_type_compunt})
+
+        data_schema = vol.Schema(
+            {
+                vol.Required(CONF_HEATER_TYPE): SelectSelector(
+                    config=SelectSelectorConfig(
+                        multiple=True,
+                        translation_key=CONF_HEATER_TYPE,
+                        options=[
+                            SelectOptionDict(
+                                label=str(h_type.name), value=str(h_type.name)
+                            )
+                            for h_type in HeaterType
+                        ],
+                    )
+                )
+            }
+        )
+
+        data_schema = self.add_suggested_values_to_schema(
+            data_schema,
+            {
+                CONF_HEATER_TYPE: [
+                    h_type.name
+                    for h_type in HeaterType
+                    if h_type
+                    & HeaterType(self.config_entry.options.get(CONF_HEATER_TYPE))
+                ]
+            },
+        )
+
+        return self.async_show_form(
+            step_id="init",
+            data_schema=data_schema,
+        )
