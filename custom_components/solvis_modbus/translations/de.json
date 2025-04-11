@@ -55,6 +55,9 @@
       },
       "domestic_water_flow": {
         "name": "Brauchwasser Durchfluss"
+      },
+      "circulation_mode": {
+        "name": "Zirkulation Modus"
       }
     }
   }
