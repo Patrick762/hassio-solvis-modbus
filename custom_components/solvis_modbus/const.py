@@ -118,15 +118,15 @@ REGISTERS = [
     ModbusFieldConfig(
         name="solar_water_flow",
         address=33040,
-        unit="l/min",
-        device_class="speed",
+        unit="L/min",
+        device_class="volume_flow_rate",
         state_class="measurement",
     ),
     ModbusFieldConfig(
         name="domestic_water_flow",
         address=33041,
-        unit="l/min",
-        device_class="speed",
+        unit="L/min",
+        device_class="volume_flow_rate",
         state_class="measurement",
     ),
 ]
