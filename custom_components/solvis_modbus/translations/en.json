@@ -6,6 +6,26 @@
           "ip_address": "IP-Address",
           "name": "Name"
         }
+      },
+      "heater_type": {
+        "data": {
+          "type": "Heater Types"
+        }
+      }
+    }
+  },
+  "options": {
+    "init": {
+      "data": {
+        "type": "Heater Types"
+      }
+    }
+  },
+  "selector": {
+    "heater_type": {
+      "options": {
+        "GAS_BOILER": "Gas Boiler",
+        "HEAT_PUMP": "Heat Pump"
       }
     }
   },
@@ -55,6 +75,12 @@
       },
       "domestic_water_flow": {
         "name": "Domestic water flow"
+      },
+      "heat_pump_thermal_power": {
+        "name": "Heat pump thermal power"
+      },
+      "heat_pump_electric_power": {
+        "name": "Heat pump electric power"
       }
     }
   }

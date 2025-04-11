@@ -6,6 +6,26 @@
           "ip_address": "IP Adresse",
           "name": "Name"
         }
+      },
+      "heater_type": {
+        "data": {
+          "type": "Heizungsarten"
+        }
+      }
+    }
+  },
+  "options": {
+    "init": {
+      "data": {
+        "type": "Heizungsarten"
+      }
+    }
+  },
+  "selector": {
+    "heater_type": {
+      "options": {
+        "GAS_BOILER": "Gasheizung",
+        "HEAT_PUMP": "Wärmepumpe"
       }
     }
   },
@@ -55,6 +75,12 @@
       },
       "domestic_water_flow": {
         "name": "Brauchwasser Durchfluss"
+      },
+      "heat_pump_thermal_power": {
+        "name": "Wärmepumpe thermische Leistung"
+      },
+      "heat_pump_electric_power": {
+        "name": "Wärmepumpen elektrische Leistung"
       }
     }
   }
