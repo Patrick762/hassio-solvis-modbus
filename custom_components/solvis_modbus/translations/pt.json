@@ -6,13 +6,33 @@
           "ip_address": "Endereço IP",
           "name": "Nome"
         }
+      },
+      "heater_type": {
+        "data": {
+          "type": "Tipos de Aquecedor"
+        }
+      }
+    }
+  },
+  "options": {
+    "init": {
+      "data": {
+        "type": "Tipos de Aquecedor"
+      }
+    }
+  },
+  "selector": {
+    "heater_type": {
+      "options": {
+        "GAS_BOILER": "Caldeira a Gás",
+        "HEAT_PUMP": "Bomba de Calor"
       }
     }
   },
   "entity": {
     "sensor": {
       "gas_power": {
-        "name": "Potência do queimador de gás"
+        "name": "Potência do queimador a gás"
       },
       "outdoor_air_temp": {
         "name": "Temperatura exterior"
@@ -24,7 +44,7 @@
         "name": "Temperatura da água fria"
       },
       "flow_water_temp": {
-        "name": "Temperatura da água em circulação"
+        "name": "Temperatura da água de fluxo"
       },
       "domestic_water_temp": {
         "name": "Temperatura da água doméstica"
@@ -39,22 +59,28 @@
         "name": "Temperatura de saída do permutador de calor solar"
       },
       "tank_layer1_water_temp": {
-        "name": "Temperatura da água no tanque - camada 1"
+        "name": "Temperatura da água da camada 1 do depósito"
       },
       "tank_layer2_water_temp": {
-        "name": "Temperatura da água no tanque - camada 2"
+        "name": "Temperatura da água da camada 2 do depósito"
       },
       "tank_layer3_water_temp": {
-        "name": "Temperatura da água no tanque - camada 3"
+        "name": "Temperatura da água da camada 3 do depósito"
       },
       "tank_layer4_water_temp": {
-        "name": "Temperatura da água no tanque - camada 4"
+        "name": "Temperatura da água da camada 4 do depósito"
       },
       "solar_water_flow": {
         "name": "Fluxo solar"
       },
       "domestic_water_flow": {
         "name": "Fluxo de água doméstica"
+      },
+      "heat_pump_thermal_power": {
+        "name": "Potência térmica da bomba de calor"
+      },
+      "heat_pump_electric_power": {
+        "name": "Potência elétrica da bomba de calor"
       }
     }
   }
