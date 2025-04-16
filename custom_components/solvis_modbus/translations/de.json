@@ -25,7 +25,8 @@
     "heater_type": {
       "options": {
         "GAS_BOILER": "Gasheizung",
-        "HEAT_PUMP": "Wärmepumpe"
+        "HEAT_PUMP": "Wärmepumpe",
+        "SOLAR": "Solarthermie Panele"
       }
     }
   },
@@ -57,6 +58,9 @@
       },
       "solar_heat_exchanger_out_water_temp": {
         "name": "Solar Temperatur Wärmetauscher Ausgang"
+      },
+      "solar_power": {
+        "name": "Solar Aktuelle Wärme Leistung"
       },
       "tank_layer1_water_temp": {
         "name": "Kessel Schicht 1 Temperatur"

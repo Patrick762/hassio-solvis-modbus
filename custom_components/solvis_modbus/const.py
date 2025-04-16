@@ -19,6 +19,7 @@ class HeaterType(Flag):
 
     GAS_BOILER = 1
     HEAT_PUMP = 2
+    SOLAR = 4
 
 
 @dataclass(frozen=True)
@@ -70,27 +71,6 @@ DEFAULT_REGISTERS = [
         state_class=SensorStateClass.MEASUREMENT,
     ),
     ModbusFieldConfig(
-        name="solar_water_temp",
-        address=33030,
-        unit="°C",
-        device_class=SensorDeviceClass.TEMPERATURE,
-        state_class=SensorStateClass.MEASUREMENT,
-    ),
-    ModbusFieldConfig(
-        name="solar_heat_exchanger_in_water_temp",
-        address=33029,
-        unit="°C",
-        device_class=SensorDeviceClass.TEMPERATURE,
-        state_class=SensorStateClass.MEASUREMENT,
-    ),
-    ModbusFieldConfig(
-        name="solar_heat_exchanger_out_water_temp",
-        address=33028,
-        unit="°C",
-        device_class=SensorDeviceClass.TEMPERATURE,
-        state_class=SensorStateClass.MEASUREMENT,
-    ),
-    ModbusFieldConfig(
         name="tank_layer1_water_temp",
         address=33026,
         unit="°C",
@@ -116,13 +96,6 @@ DEFAULT_REGISTERS = [
         address=33024,
         unit="°C",
         device_class=SensorDeviceClass.TEMPERATURE,
-        state_class=SensorStateClass.MEASUREMENT,
-    ),
-    ModbusFieldConfig(
-        name="solar_water_flow",
-        address=33040,
-        unit="L/min",
-        device_class="volume_flow_rate",
         state_class=SensorStateClass.MEASUREMENT,
     ),
     ModbusFieldConfig(
@@ -162,9 +135,48 @@ HEAT_PUMP_REGISTERS = [
     ),
 ]
 
+SOLAR_REGISTERS = [
+    ModbusFieldConfig(
+        name="solar_water_temp",
+        address=33030,
+        unit="°C",
+        device_class=SensorDeviceClass.TEMPERATURE,
+        state_class=SensorStateClass.MEASUREMENT,
+    ),
+    ModbusFieldConfig(
+        name="solar_heat_exchanger_in_water_temp",
+        address=33029,
+        unit="°C",
+        device_class=SensorDeviceClass.TEMPERATURE,
+        state_class=SensorStateClass.MEASUREMENT,
+    ),
+    ModbusFieldConfig(
+        name="solar_heat_exchanger_out_water_temp",
+        address=33028,
+        unit="°C",
+        device_class=SensorDeviceClass.TEMPERATURE,
+        state_class=SensorStateClass.MEASUREMENT,
+    ),
+    ModbusFieldConfig(
+        name="solar_water_flow",
+        address=33040,
+        unit="L/min",
+        device_class="volume_flow_rate",
+        state_class=SensorStateClass.MEASUREMENT,
+    ),
+    ModbusFieldConfig(
+        name="solar_power",
+        address=33543,
+        unit="kW",
+        device_class=SensorDeviceClass.POWER,
+        state_class=SensorStateClass.MEASUREMENT,
+    ),
+]
+
 
 REGISTERS = [
     *DEFAULT_REGISTERS,
     *GAS_REGISTERS,
     *HEAT_PUMP_REGISTERS,
+    *SOLAR_REGISTERS,
 ]
