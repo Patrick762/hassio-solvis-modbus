@@ -15,9 +15,11 @@
     }
   },
   "options": {
-    "init": {
-      "data": {
-        "type": "Heizungsarten"
+    "step": {
+      "init": {
+        "data": {
+          "type": "Heater Types"
+        }
       }
     }
   },
