@@ -66,11 +66,21 @@ async def async_migrate_entry(hass: HomeAssistant, config_entry: ConfigEntry):
         new_data = {**config_entry.data}
         new_options = {**config_entry.options}
 
-        new_options[CONF_HEATER_TYPE] = HeaterType.GAS_BOILER
+        new_options[CONF_HEATER_TYPE] = HeaterType.GAS_BOILER | HeaterType.SOLAR
         _LOGGER.debug("Adding default heater type to options")
 
         hass.config_entries.async_update_entry(
             config_entry, data=new_data, options=new_options, minor_version=1, version=2
+        )
+    if config_entry.version == 2:
+        new_data = {**config_entry.data}
+        new_options = {**config_entry.options}
+        if config_entry.minor_version == 1:
+            new_options[CONF_HEATER_TYPE] = (
+                HeaterType(new_options[CONF_HEATER_TYPE]) | HeaterType.SOLAR
+            )
+        hass.config_entries.async_update_entry(
+            config_entry, data=new_data, options=new_options, minor_version=2, version=2
         )
 
     _LOGGER.info(

@@ -25,7 +25,8 @@
     "heater_type": {
       "options": {
         "GAS_BOILER": "Gas Boiler",
-        "HEAT_PUMP": "Heat Pump"
+        "HEAT_PUMP": "Heat Pump",
+        "SOLAR": "Solar Panels"
       }
     }
   },
@@ -57,6 +58,9 @@
       },
       "solar_heat_exchanger_out_water_temp": {
         "name": "Solar temperature heat exchanger output"
+      },
+      "solar_power": {
+        "name": "Solar current heating power"
       },
       "tank_layer1_water_temp": {
         "name": "Tank layer 1 water temperature"

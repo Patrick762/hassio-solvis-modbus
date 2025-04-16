@@ -25,6 +25,7 @@ from .const import (
     MANUFACTURER,
     DEFAULT_REGISTERS,
     CONF_HEATER_TYPE,
+    SOLAR_REGISTERS,
     HeaterType,
 )
 from .coordinator import PollingCoordinator
@@ -58,6 +59,8 @@ async def async_setup_entry(
         registers.extend(GAS_REGISTERS)
     if heater_types & HeaterType.HEAT_PUMP:
         registers.extend(HEAT_PUMP_REGISTERS)
+    if heater_types & HeaterType.SOLAR:
+        registers.extend(SOLAR_REGISTERS)
 
     for register in registers:
         sensors_to_add.append(
