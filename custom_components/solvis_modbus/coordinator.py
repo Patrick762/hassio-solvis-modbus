@@ -5,7 +5,6 @@ from datetime import timedelta
 import logging
 import async_timeout
 from pymodbus.client import ModbusTcpClient
-from pymodbus.payload import Endian
 
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.update_coordinator import (
@@ -72,7 +71,6 @@ class PollingCoordinator(DataUpdateCoordinator):
                     for register in REGISTERS:
                         result = self.client.read_input_registers(
                             address=register.address,
-                            slave=1,
                         )
 
                         # Add data to return values
@@ -80,7 +78,7 @@ class PollingCoordinator(DataUpdateCoordinator):
                             d = self.client.convert_from_registers(
                                 result.registers,
                                 self.client.DATATYPE.INT16,
-                                word_order=Endian.BIG,
+                                word_order='big',
                             )
                             parsed_data[register.name] = round(d * register.multiplier, 2)
 
