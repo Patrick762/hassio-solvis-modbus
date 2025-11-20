@@ -9,6 +9,15 @@
       }
     }
   },
+  "selector": {
+    "heater_type": {
+      "options": {
+        "GAS_BOILER": "Caldeira a Gás",
+        "HEAT_PUMP": "Bomba de Calor",
+        "SOLAR": "Painéis Solares"
+      }
+    }
+  },
   "entity": {
     "sensor": {
       "gas_power": {
@@ -37,6 +46,9 @@
       },
       "solar_heat_exchanger_out_water_temp": {
         "name": "Temperatura de saída do permutador de calor solar"
+      },
+      "solar_power": {
+        "name": "Potência solar atual"
       },
       "tank_layer1_water_temp": {
         "name": "Temperatura da água no tanque - camada 1"
