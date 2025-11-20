@@ -126,7 +126,7 @@ class SolvisOptionsFlow(config_entries.OptionsFlow):
 
         data_schema = vol.Schema(
             {
-                vol.Required(CONF_HEATER_TYPE): SelectSelector(
+                vol.Required("type"): SelectSelector(
                     config=SelectSelectorConfig(
                         multiple=True,
                         translation_key=CONF_HEATER_TYPE,

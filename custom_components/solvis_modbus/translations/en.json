@@ -15,9 +15,11 @@
     }
   },
   "options": {
-    "init": {
-      "data": {
-        "type": "Heater Types"
+    "step": {
+      "init": {
+        "data": {
+          "type": "Heater Types"
+        }
       }
     }
   },
